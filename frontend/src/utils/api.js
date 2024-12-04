@@ -139,6 +139,6 @@ class Api {
   }
   }
   // Замените на адрес вашего бэкенда
-  const api = new Api('http://api.chunga.nomorepartiesco.ru');
+  const api = new Api('http://chunga.nomorepartiesco.ru/api');
 
   export default api;

@@ -7,7 +7,7 @@ const {
 module.exports = {
   apps: [{
     name   : "backend",
-    script : "./backend/src/app.ts"
+    script : "dist/app.js"
   }],
   deploy: {
     production: {
