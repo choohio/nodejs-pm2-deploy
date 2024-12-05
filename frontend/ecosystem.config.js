@@ -1,7 +1,8 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config({path: './.env.deploy'});
 
 const {
-  DEPLOY_USER, DEPLOY_HOST, DEPLOY_PATH, DEPLOY_REF,
+  DEPLOY_USER, DEPLOY_HOST, DEPLOY_PATH, DEPLOY_REF, DEPLOY_REPOSITORY
 } = process.env;
 
 module.exports = {
@@ -14,10 +15,9 @@ module.exports = {
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
-      repo: 'https://github.com/choohio/nodejs-pm2-deploy.git',
+      repo: DEPLOY_REPOSITORY,
       path: DEPLOY_PATH,
-      'pre-deploy': `scp ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
-      'post-deploy': 'npm i && npm run build',
+      'post-deploy': 'cd backend && pwd && npm ci && npm run build',
     },
   },
 }
